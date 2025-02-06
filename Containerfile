@@ -1,7 +1,6 @@
 FROM registry.access.redhat.com/ubi9/ubi:latest
 
-RUN dnf update pam -y && \
-    dnf remove vim-minimal
+RUN dnf update pam -y
 
 ENV HOME /root
 
