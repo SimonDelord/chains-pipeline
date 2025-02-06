@@ -2,7 +2,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
-  name: harden-ubi
+  name: harden-ubi-build
   labels:
     app.kubernetes.io/version: "0.1"
   annotations:
@@ -20,17 +20,15 @@ spec:
   params:
   - name: IMAGE
     description: Reference of the image buildah will produce.
-  - name: SRC_IMAGE
-    description: Reference of the source image to be hardened
   - name: BUILDER_IMAGE
     description: The location of the buildah builder image.
-    default: quay.io/buildah/stable:v1.17.0
+    default: quay.io/containers/buildah:v1.38.1
   - name: STORAGE_DRIVER
     description: Set buildah storage driver
     default: overlay
   - name: DOCKERFILE
     description: Path to the Dockerfile to build.
-    default: ./Dockerfile
+    default: ./Containerfile
   - name: CONTEXT
     description: Path to the directory to use as context.
     default: .
